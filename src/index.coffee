@@ -3,9 +3,10 @@ Couple of lines from:
 https://github.com/jeromeetienne/microevent.js
 ###
 
-Item = require './pivot_item'
+if exports? and module and module.exports
+  PivotItem = require './pivot_item'
 
-module.exports = class Pivot
+class Pivot
 
 
   _events: null
@@ -20,7 +21,7 @@ module.exports = class Pivot
   on: ( event, funk, bind = off ) ->
     @_do_init event
 
-    listener       = new Item @
+    listener       = new PivotItem @
     listener.event = event
     listener.funk  = funk
 
