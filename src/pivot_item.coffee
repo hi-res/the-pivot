@@ -50,7 +50,7 @@ class PivotItem
     @parent.on @event, @funk
 
 
-if exports and module and module.exports
+if exports? and module and module.exports
   module.exports = PivotItem
-else if define and define.amd
+else if define? and define.amd
   define -> PivotItem
