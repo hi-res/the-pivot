@@ -1,0 +1,17 @@
+server:
+  port: 3000
+  root: ./public
+
+input:
+  - ./src
+
+output:
+  js: ./public/app.js
+  css: ./public/app.css
+
+alias:
+  app: ./src/app
+  templates: ./src/templates
+  theoricus: ../../../www/src/theoricus
+
+boot: ./src/app/app

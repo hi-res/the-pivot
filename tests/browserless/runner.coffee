@@ -1,7 +1,7 @@
 fsu  = require 'fs-util'
 path = require 'path'
 
-Pivot = require '../src/index'
+Pivot = require '../../src/index'
 
 # list of test files
 files = fsu.find (path.join __dirname, 'functional'), /\.coffee$/m
