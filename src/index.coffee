@@ -59,6 +59,14 @@ class Pivot
 
     return off
 
+  # Returns true if function is subscribed to event
+  will_call: ( event, funk ) ->
+    for item, index in @_events[ event ].listeners
+      if item.funk == funk
+        return on
+
+    return off
+
   # Saves a value for a key ( event )
   # 
   # If the value is different from previously set value, trigger method
