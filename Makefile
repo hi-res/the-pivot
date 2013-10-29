@@ -5,7 +5,7 @@ MOCHA=node_modules/mocha/bin/mocha
 COVERALLS=node_modules/coveralls/bin/coveralls.js
 
 MVERSION=node_modules/mversion/bin/version
-VERSION=0.2.1
+VERSION=0.2.2
 
 setup:
 	npm install
