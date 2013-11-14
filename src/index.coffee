@@ -42,6 +42,10 @@ class Pivot
   bind: ( event, funk, bind = on ) ->
     return @on event, funk, bind
 
+  # Alias for off
+  unbind: ( event, funk ) ->
+    @off event, funk
+
   # "Removes a listener" for a given event
   off: ( event, funk ) ->
     return if not @_events[ event ]?

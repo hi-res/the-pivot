@@ -19,6 +19,12 @@ exports.test = ( pivot ) ->
 
         done()
 
+    it 'it should bind to a key', (done)->
+
+        pivot.bind 'test', -> done()
+
+        pivot.set 'test', 5
+
   describe '[event system]', ->
 
     it 'it should register an event', (done) ->
@@ -26,19 +32,51 @@ exports.test = ( pivot ) ->
         pivot.on 'event', ->
         done()
 
-    it 'it should propagate an event', (done)->
+    it 'it should trigger an event', (done)->
 
-        pivot.on 'changed:name', foofunk
-        pivot.on 'changed:name', -> done()
+        pivot.on 'test:trigger', foofunk
+        pivot.on 'test:trigger', -> done()
 
-        pivot.trigger 'changed:name', 'foo'
+        pivot.trigger 'test:trigger', 'foo'
 
     it 'it should unregister event', (done)->
 
-        pivot.off( 'changed:name', foofunk ).should.equal true
+        pivot.off( 'test:trigger', foofunk ).should.equal true
 
         done()
 
+    it 'it should emit an event', (done)->
+
+        pivot.on 'test:emit', foofunk
+        pivot.on 'test:emit', -> done()
+
+        pivot.emit 'test:emit', 'foo'
+
+
+
+    it 'it should listen to an event only once', (done)->
+
+        counter = 0;
+
+        funk = -> counter++
+
+        pivot.once 'test:once', funk
+
+        pivot.trigger 'test:once'
+        pivot.trigger 'test:once'
+
+        counter.should.equal 1
+
+        done()
+
+    it 'should know if a function is subscribed to an event', ( done ) ->
+        funk = -> 
+
+        pivot.on 'test:will_call', funk
+
+        pivot.will_call( 'test:will_call', funk ).should.equal true
+
+        done()
 
   # describe '[include/extend]', ->
 
