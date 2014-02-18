@@ -56,7 +56,7 @@ class Pivot
 
         return on
 
-    console.log "function wasnt bined to event #{event}"
+    # console.log "function wasnt bined to event #{event}"
 
     return off
 
